@@ -1,5 +1,10 @@
 import React from "react";
-import { Link, withRouter, RouteComponentProps } from "react-router-dom";
+import {
+  Link,
+  withRouter,
+  NavLink,
+  RouteComponentProps
+} from "react-router-dom";
 import NewsTitle from "./NewsTitle";
 
 export interface INewsHeaderProps extends RouteComponentProps {
@@ -8,6 +13,7 @@ export interface INewsHeaderProps extends RouteComponentProps {
   author?: string;
   date?: string;
   id?: string;
+  onDeleteNews?: Function;
 }
 
 const NewsHeader: React.FC<INewsHeaderProps> = ({
@@ -17,6 +23,7 @@ const NewsHeader: React.FC<INewsHeaderProps> = ({
   id,
   match,
   history,
+  onDeleteNews = () => {},
   showInformation
 }) => {
   return (
@@ -25,12 +32,18 @@ const NewsHeader: React.FC<INewsHeaderProps> = ({
         <div>
           <div>{!id && <span onClick={() => history.goBack()}>Back</span>}</div>
           <NewsTitle>
-            {id ? <Link to={`${match.path}/${id}`}>{title}</Link> : title}
+            {id ? <Link to={`/news/${id}`}>{title}</Link> : title}
           </NewsTitle>
         </div>
         <div className="news-header-controls">
-          <div className="news-header-controls-item icon-edit" />
-          <div className="news-header-controls-item icon-close" />
+          <NavLink
+            className="news-header-controls-item icon-edit"
+            to={`/news/${id}/edit`}
+          />
+          <div
+            className="news-header-controls-item icon-close"
+            onClick={() => onDeleteNews(id)}
+          />
         </div>
       </div>
       {showInformation && (

@@ -5,9 +5,10 @@ import { INews } from "../interfaces/INews";
 
 interface INewsListProps {
   news: Array<INews>;
+  onDeleteNews: Function;
 }
 
-const NewsList: React.FC<INewsListProps> = ({ news }) => {
+const NewsList: React.FC<INewsListProps> = ({ news, onDeleteNews }) => {
   return (
     <div className="news-list">
       {/*  */}
@@ -19,6 +20,7 @@ const NewsList: React.FC<INewsListProps> = ({ news }) => {
           date={data.date}
           content={data.content}
           id={data.id}
+          onDeleteNews={onDeleteNews}
         />
       ))}
       {/*  */}

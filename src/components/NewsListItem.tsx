@@ -5,14 +5,17 @@ import { INews } from "../interfaces/INews";
 import NewsHeader from "./NewsHeader";
 import NewsContent from "./NewsDesc";
 
-export interface INewsListItemProps extends INews {}
+export interface INewsListItemProps extends INews {
+  onDeleteNews: Function;
+}
 
 const NewsListItem: React.FC<INewsListItemProps> = ({
   title,
   date,
   author,
   content,
-  id
+  id,
+  onDeleteNews
 }) => {
   return (
     <div className="news-list-item">
@@ -22,6 +25,7 @@ const NewsListItem: React.FC<INewsListItemProps> = ({
         date={date}
         author={author}
         id={id}
+        onDeleteNews={onDeleteNews}
         showInformation
       />
       {/* desc  */}
