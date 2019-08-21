@@ -18,17 +18,51 @@ interface IActinoNewsFetchFaild extends Action {
   type: newsConstants.NEWS_FETCH_FAILD;
 }
 
-export type ActionNewsFetch =
-  | IActionNewsFetch
-  | IActionNewsFetchSuccess
-  | IActinoNewsFetchFaild;
+interface IActionNewsCache extends Action {
+  type: newsConstants.NEWS_CACHE;
+  news: INews;
+}
 
 interface IActinoNewsGetAll extends Action {
   type: newsConstants.NEWS_GET_ALL;
   allNews: INews[];
 }
 
+interface IActionNewsDelete extends Action {
+  type: newsConstants.NEWS_DELETE;
+  id: string;
+}
+
+interface IActionNewsGet extends Action {
+  type: newsConstants.NEWS_GET;
+  news: INews;
+}
+
+interface IActionNewsSave extends Action {
+  type: newsConstants.NEWS_SAVE;
+  news: INews;
+}
+
+export type ActionNewsFetch =
+  | IActionNewsFetch
+  | IActionNewsFetchSuccess
+  | IActinoNewsFetchFaild;
+
+export type ActionNewsCache = IActionNewsCache;
 export type ActionGetAllNews = IActinoNewsGetAll | ActionNewsFetch;
+export type ActionDeleteNews = IActionNewsDelete | ActionNewsFetch;
+export type ActionGetNews = IActionNewsGet | IActionNewsCache | ActionNewsFetch;
+export type ActionNewSave = IActionNewsSave | ActionNewsFetch;
+
+//
+export type ActionNews =
+  | ActionGetAllNews
+  | ActionDeleteNews
+  | ActionGetNews
+  | ActionNewsCache
+  | ActionNewSave
+  | ActionNewsFetch;
+//
 
 export const getAllNews: ActionCreator<
   ThunkAction<Promise<void>, {}, null, ActionGetAllNews>
@@ -39,13 +73,6 @@ export const getAllNews: ActionCreator<
     dispath({ type: newsConstants.NEWS_GET_ALL, allNews: [] });
   } catch (err) {}
 };
-
-export interface IActionNewsDelete extends Action {
-  type: newsConstants.NEWS_DELETE;
-  id: string;
-}
-
-export type ActionDeleteNews = IActionNewsDelete | ActionNewsFetch;
 
 export const deleteNews: ActionCreator<
   ThunkAction<Promise<void>, IApplicationState, null, ActionDeleteNews>
@@ -58,13 +85,6 @@ export const deleteNews: ActionCreator<
     dispatch({ type: newsConstants.NEWS_DELETE, id });
   } catch (err) {}
 };
-
-interface IActionNewsGet extends Action {
-  type: newsConstants.NEWS_GET;
-  news: INews;
-}
-
-export type ActionGetNews = IActionNewsGet | IActionNewsCache | ActionNewsFetch;
 
 export const getNews: ActionCreator<
   ThunkAction<Promise<void>, IApplicationState, null, ActionGetNews>
@@ -101,25 +121,11 @@ Laboris Lorem tempor officia cillum excepteur. Minim non proident eiusmod id par
   } catch (err) {}
 };
 
-interface IActionNewsCache extends Action {
-  type: newsConstants.NEWS_CACHE;
-  news: INews;
-}
-
-export type ActionNewsCache = IActionNewsCache;
-
 export const addInCacheNews: ActionCreator<IActionNewsCache> = (
   news: INews
 ) => {
   return { type: newsConstants.NEWS_CACHE, news };
 };
-
-interface IActionNewsSave extends Action {
-  type: newsConstants.NEWS_SAVE;
-  news: INews;
-}
-
-export type ActionNewSave = IActionNewsSave | ActionNewsFetch;
 
 export const saveNews: ActionCreator<
   ThunkAction<Promise<void>, IApplicationState, null, ActionNewSave>
@@ -137,12 +143,3 @@ export const saveNews: ActionCreator<
     });
   } catch (err) {}
 };
-
-//
-export type ActionNews =
-  | ActionGetAllNews
-  | ActionDeleteNews
-  | ActionGetNews
-  | ActionNewsCache
-  | ActionNewSave
-  | ActionNewsFetch;
