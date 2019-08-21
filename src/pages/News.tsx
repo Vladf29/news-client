@@ -2,9 +2,9 @@ import React from "react";
 
 import "./News.css";
 import NewsList from "../components/NewsList";
-import { INewsListItemProps } from "../components/NewsListItem";
+import { INews } from "../interfaces/INews";
 
-const fakeNews: Array<INewsListItemProps> = [
+const fakeNews: Array<INews> = [
   {
     id: "1",
     title: "Heading",

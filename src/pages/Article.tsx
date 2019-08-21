@@ -1,10 +1,12 @@
 import React from "react";
 import "./News.css";
 
+import { INews } from "../interfaces/INews";
+
 import NewsHeader from "../components/NewsHeader";
 import NewsContent from "../components/NewsDesc";
 
-const fakeNews = {
+const fakeNews: INews = {
   id: "1",
   title: "Heading",
   author: "Dev",

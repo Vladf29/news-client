@@ -1,8 +1,11 @@
 import React from "react";
-import NewsHeader, { INewsHeader } from "./NewsHeader";
-import NewsContent, { INewsDesc } from "./NewsDesc";
 
-export interface INewsListItemProps extends INewsHeader, INewsDesc {}
+import { INews } from "../interfaces/INews";
+
+import NewsHeader from "./NewsHeader";
+import NewsContent from "./NewsDesc";
+
+export interface INewsListItemProps extends INews {}
 
 const NewsListItem: React.FC<INewsListItemProps> = ({
   title,
@@ -14,7 +17,13 @@ const NewsListItem: React.FC<INewsListItemProps> = ({
   return (
     <div className="news-list-item">
       {/* Header  */}
-      <NewsHeader title={title} date={date} author={author} id={id} showInformation/>
+      <NewsHeader
+        title={title}
+        date={date}
+        author={author}
+        id={id}
+        showInformation
+      />
       {/* desc  */}
       <NewsContent content={content} shortContent />
       {/* end */}

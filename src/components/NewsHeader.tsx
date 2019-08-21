@@ -2,15 +2,12 @@ import React from "react";
 import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import NewsTitle from "./NewsTitle";
 
-export interface INewsHeader {
+export interface INewsHeaderProps extends RouteComponentProps {
+  showInformation?: boolean;
   title: string;
   author?: string;
   date?: string;
   id?: string;
-}
-
-export interface INewsHeaderProps extends RouteComponentProps, INewsHeader {
-  showInformation?: boolean;
 }
 
 const NewsHeader: React.FC<INewsHeaderProps> = ({

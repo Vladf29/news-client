@@ -1,9 +1,10 @@
 import React from "react";
 
-import NewsListItem, { INewsListItemProps } from "./NewsListItem";
+import NewsListItem from "./NewsListItem";
+import { INews } from "../interfaces/INews";
 
 interface INewsListProps {
-  news: Array<INewsListItemProps>;
+  news: Array<INews>;
 }
 
 const NewsList: React.FC<INewsListProps> = ({ news }) => {
