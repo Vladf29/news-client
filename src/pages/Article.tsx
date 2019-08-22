@@ -1,5 +1,5 @@
 import React from "react";
-import "./News.css";
+import "./News.scss";
 
 import ArticleContainer from "../containers/ArticleContainer";
 
