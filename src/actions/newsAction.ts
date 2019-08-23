@@ -6,6 +6,15 @@ import * as newsConstants from "../constants";
 import { INews } from "../interfaces/INews";
 import { IApplicationState } from "../reducers";
 
+const fakeNews: INews = {
+  id: "1",
+  author: "Someone",
+  date: "12.01.2019",
+  title: `It's fake news`,
+  content: `Deserunt laboris laborum qui enim cupidatat ex minim adipisicing ex ut. Elit ullamco occaecat aute fugiat culpa. Commodo sint ullamco id adipisicing incididunt enim fugiat reprehenderit sunt id minim ex. Deserunt elit voluptate reprehenderit Lorem dolor irure tempor id esse non. Tempor nulla mollit ex consectetur irure excepteur dolor esse et elit deserunt sunt.
+Laboris Lorem tempor officia cillum excepteur. Minim non proident eiusmod id pariatur ut enim reprehenderit nostrud irure. Culpa dolor cillum qui exercitation esse. Sunt eu commodo minim irure duis ea. Laboris culpa minim labore veniam proident sunt pariatur sunt. Nostrud nisi excepteur est ea ipsum deserunt.`
+};
+
 interface IActionNewsFetch extends Action {
   type: newsConstants.NEWS_FETCH;
 }
@@ -70,12 +79,12 @@ export const getAllNews: ActionCreator<
   try {
     //TODO: Fetch data
 
-    dispath({ type: newsConstants.NEWS_GET_ALL, allNews: [] });
+    dispath({ type: newsConstants.NEWS_GET_ALL, allNews: [fakeNews] });
   } catch (err) {}
 };
 
 export const deleteNews: ActionCreator<
-  ThunkAction<Promise<void>, IApplicationState, null, ActionDeleteNews>
+  ThunkAction<Promise<boolean>, IApplicationState, null, ActionDeleteNews>
 > = (id: string) => async (dispatch, getState) => {
   try {
     //TODO: Request;
@@ -83,7 +92,11 @@ export const deleteNews: ActionCreator<
     console.log("delete news", id);
 
     dispatch({ type: newsConstants.NEWS_DELETE, id });
-  } catch (err) {}
+
+    return true;
+  } catch (err) {
+    return false;
+  }
 };
 
 export const getNews: ActionCreator<
@@ -105,14 +118,7 @@ export const getNews: ActionCreator<
       return;
     }
 
-    const news: INews = {
-      id: "1",
-      author: "Someone",
-      date: "12.01.2019",
-      title: `It's fake news`,
-      content: `Deserunt laboris laborum qui enim cupidatat ex minim adipisicing ex ut. Elit ullamco occaecat aute fugiat culpa. Commodo sint ullamco id adipisicing incididunt enim fugiat reprehenderit sunt id minim ex. Deserunt elit voluptate reprehenderit Lorem dolor irure tempor id esse non. Tempor nulla mollit ex consectetur irure excepteur dolor esse et elit deserunt sunt.
-Laboris Lorem tempor officia cillum excepteur. Minim non proident eiusmod id pariatur ut enim reprehenderit nostrud irure. Culpa dolor cillum qui exercitation esse. Sunt eu commodo minim irure duis ea. Laboris culpa minim labore veniam proident sunt pariatur sunt. Nostrud nisi excepteur est ea ipsum deserunt.`
-    };
+    const news: INews = fakeNews;
 
     batch(() => {
       dispatch({ type: newsConstants.NEWS_GET, news });
