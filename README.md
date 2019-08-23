@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Status: In Under Development<br/>
+Technology: React.js, Redux, TypeScript
+
+## Information
+A small web news app.<br/>
+
 ## Available Scripts
 
 In the project directory, you can run:
