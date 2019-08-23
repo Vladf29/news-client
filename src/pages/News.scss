@@ -1,18 +1,23 @@
+%commo-styles {
+  width: 460px;
+  padding: 0.6em 1em;
+
+  background-color: #fff;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.11);
+  border-radius: 6px;
+}
+
 .news {
   &-list {
   }
 
-  &-article,
-  &-list-item {
-    width: 460px;
-    padding: 0.6em 1em;
-
-    background-color: #fff;
-    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.11);
-    border-radius: 6px;
+  &-article {
+    @extend %commo-styles;
+    width: 100%;
   }
 
   &-list-item {
+    @extend %commo-styles;
     margin-bottom: 1.2em;
 
     &:last-child {
@@ -84,10 +89,12 @@
       padding-top: 10px;
       padding-bottom: 10px;
       resize: none;
-      border: 0;
+      // border: 0;
       outline: none;
       font-size: 1em;
       font-family: inherit;
+      border-radius: 5px;
+      border-width: 2px;
     }
 
     &-btns {
