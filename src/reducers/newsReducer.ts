@@ -14,16 +14,7 @@ export interface INewsState {
 }
 
 const INIT_STATE: INewsState = {
-  allNews: [
-    {
-      id: "1",
-      title: "Heading",
-      author: "Dev",
-      date: "01.08.2021",
-      content:
-        "Occaecat aliqua et incididunt tempor proident pariatur. Occaecat aliqua et incididunt tempor proident pariatur."
-    }
-  ],
+  allNews: [],
   news: {
     id: "",
     title: "",
@@ -56,7 +47,9 @@ const reducer: Reducer<INewsState, ActionNews> = (
     case newsConstants.NEWS_DELETE:
       return {
         ...state,
-        allNews: state.allNews.filter(news => news.id !== action.id)
+        allNews: state.allNews.filter(news => news.id !== action.id),
+        news: state.news.id === action.id ? INIT_STATE.news : { ...state.news },
+        cacheNews: state.cacheNews.filter(news => news.id !== action.id)
       };
     case newsConstants.NEWS_GET:
       return { ...state, news: action.news };
