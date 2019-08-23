@@ -14,6 +14,7 @@ export interface INewsHeaderProps extends RouteComponentProps {
   date?: string;
   id?: string;
   onDeleteNews?: Function;
+  showControls?: boolean;
 }
 
 const NewsHeader: React.FC<INewsHeaderProps> = ({
@@ -24,7 +25,8 @@ const NewsHeader: React.FC<INewsHeaderProps> = ({
   match,
   history,
   onDeleteNews = () => {},
-  showInformation
+  showInformation,
+  showControls
 }) => {
   return (
     <div className="news-header">
@@ -35,16 +37,18 @@ const NewsHeader: React.FC<INewsHeaderProps> = ({
             {id ? <Link to={`/news/${id}`}>{title}</Link> : title}
           </NewsTitle>
         </div>
-        <div className="news-header-controls">
-          <NavLink
-            className="news-header-controls-item icon-edit"
-            to={`/news/${id}/edit`}
-          />
-          <div
-            className="news-header-controls-item icon-close"
-            onClick={() => onDeleteNews(id)}
-          />
-        </div>
+        {showControls && (
+          <div className="news-header-controls">
+            <NavLink
+              className="news-header-controls-item icon-edit"
+              to={`/news/${id}/edit`}
+            />
+            <div
+              className="news-header-controls-item icon-close"
+              onClick={() => onDeleteNews(id)}
+            />
+          </div>
+        )}
       </div>
       {showInformation && (
         <div className="news-header-container">

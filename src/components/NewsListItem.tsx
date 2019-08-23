@@ -27,6 +27,7 @@ const NewsListItem: React.FC<INewsListItemProps> = ({
         id={id}
         onDeleteNews={onDeleteNews}
         showInformation
+        showControls
       />
       {/* desc  */}
       <NewsContent content={content} shortContent />
