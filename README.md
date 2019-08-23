@@ -5,7 +5,6 @@ Technology: React.js, Redux, TypeScript
 
 ## Information
 A small web news app.<br/>
-The idea is to develop a web application using only hooks.
 
 ## Available Scripts
 
