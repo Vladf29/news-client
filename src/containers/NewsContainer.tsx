@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { deleteNews } from "../actions/newsAction";
+import { deleteNews, getAllNews } from "../actions/newsAction";
 
 import NewsList from "../components/NewsList";
 import { INews } from "../interfaces/INews";
@@ -19,6 +19,10 @@ const NewsContainer = () => {
     (id: string) => dispatch(deleteNews(id)),
     []
   );
+
+  useEffect(() => {
+    dispatch(getAllNews());
+  }, []);
 
   return <NewsList news={allNews} onDeleteNews={deleteNewsClb} />;
 };
