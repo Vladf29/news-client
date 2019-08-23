@@ -1,5 +1,11 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Status: In Under Development<br/>
+Technology: React.js, Redux
+
+## Information
+The idea is to develop a web application using only hooks.
+
 ## Available Scripts
 
 In the project directory, you can run:
