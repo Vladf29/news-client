@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #f1f1f1;
+  font-family: "Roboto";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+%common-icon-style {
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.icon-close {
+  @extend %common-icon-style;
+  background-image: url(../assert/cancel.png);
+}
+
+.icon-edit {
+  @extend %common-icon-style;
+  background-image: url(../assert/edit.png);
+}
+
+.app {
+  .app-container {
+    padding-top: 42px;
+    padding-bottom: 42px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    /* background: #087eb7; */
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.11);
+    background-color: #fff;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    padding-left: 34px;
+    padding-right: 34px;
+
+    &-menu {
+      &-link {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+
+    &-login {
+      &-link {
+        /* color: #fff; */
+        cursor: pointer;
+      }
+    }
+  }
+}
