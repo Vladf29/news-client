@@ -1,0 +1,31 @@
+@mixin mixinBtnMod($fontColor, $bgColor, $hoverBg) {
+  background-color: $bgColor;
+  color: $fontColor;
+  &:hover {
+    background-color: $hoverBg;
+  }
+}
+
+.app-button {
+  display: block;
+  font-size: 1em;
+  font-family: inherit;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+
+  padding-top: 0.45em;
+  padding-bottom: 0.45em;
+  padding-right: 0.65em;
+  padding-left: 0.65em;
+
+  cursor: pointer;
+
+  &--success {
+    @include mixinBtnMod(#fff, #28a745, #218838);
+  }
+
+  &--danger {
+    @include mixinBtnMod(#fff, #bd2130, #c82333);
+  }
+}
