@@ -9,6 +9,7 @@ import Article from "./pages/Article";
 import NewsEdit from "./pages/NewsEdit";
 
 import AppHeader from "./components/AppHeader";
+import Login from "./pages/Login";
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
               <Route path="/news/:newsId/edit" component={NewsEdit} />
               <Route path="/news/:newsId" component={Article} />
               <Route path="/edit" component={NewsEdit} />
+              <Route path="/login" component={Login} />
             </Switch>
           </div>
         </BrowserRouter>

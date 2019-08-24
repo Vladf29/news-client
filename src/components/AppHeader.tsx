@@ -11,7 +11,7 @@ const AppHeader = () => {
       </nav>
       <div className="app-header-login">
         <div className="app-header-login-link">
-          <span>Sign in</span>
+          <NavLink to="/login">Sign in</NavLink>
         </div>
       </div>
     </div>
