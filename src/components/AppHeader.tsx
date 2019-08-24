@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 
 const AppHeader = () => {
   return (
-    <div className="header">
-      <nav className="header-menu">
-        <NavLink to="/news" className="header-menu-link">
+    <div className="app-header">
+      <nav className="app-header-menu">
+        <NavLink to="/news" className="app-header-menu-link">
           Home
         </NavLink>
       </nav>
-      <div className="header-login">
-        <div className="header-login-link">
+      <div className="app-header-login">
+        <div className="app-header-login-link">
           <span>Sign in</span>
         </div>
       </div>
