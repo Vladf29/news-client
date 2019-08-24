@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
 body {
   background-color: #f1f1f1;
   font-family: "Roboto";
@@ -35,11 +39,14 @@ code {
 }
 
 .app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   .app-container {
-    padding-top: 42px;
-    padding-bottom: 42px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 42px 32px;
+    display: flex;
+    flex: 1 0 auto;
   }
 
   &-header {
